@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/OGMikee/chess-opening-trainer/compare/v0.1.5...v0.1.6) (2025-10-30)
+
+
+### Features
+
+* **logic:** valid moves (conflicts etc.) ([be59071](https://github.com/OGMikee/chess-opening-trainer/commit/be590713837169d7aba008ebe9b3cec95c1d47e4))
+
 ### [0.1.5](https://github.com/OGMikee/chess-opening-trainer/compare/v0.1.4...v0.1.5) (2025-10-30)
 
 
