@@ -2,10 +2,6 @@ package com.ogmikee.chess.model;
 
 import java.util.Objects;
 
-/**
- * Represents a chess piece with a type and color.
- * This is a simple data class - just stores the piece information.
- */
 public class Piece {
     private final PieceType type;
     private final Color color;
