@@ -1,0 +1,29 @@
+{
+  "name": "chess-opening-trainer",
+  "version": "0.1.0",
+  "description": "Chess opening trainer with PGN support",
+  "scripts": {
+    "commit": "cz",
+    "release": "standard-version"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OGMikee/chess-opening-trainer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OGMikee/chess-opening-trainer/issues"
+  },
+  "homepage": "https://github.com/OGMikee/chess-opening-trainer#readme",
+  "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "standard-version": "^9.5.0"
+  }
+}
