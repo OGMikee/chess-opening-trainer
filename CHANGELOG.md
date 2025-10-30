@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/OGMikee/chess-opening-trainer/compare/v0.1.4...v0.1.5) (2025-10-30)
+
+
+### Features
+
+* **model:** initialized piece moves ([2e59847](https://github.com/OGMikee/chess-opening-trainer/commit/2e598472340fd3846b03bfa22418c7a596805ae1))
+
 ### [0.1.4](https://github.com/OGMikee/chess-opening-trainer/compare/v0.1.3...v0.1.4) (2025-10-30)
 
 
