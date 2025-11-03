@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/OGMikee/chess-opening-trainer/compare/v0.1.6...v0.2.0) (2025-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **gameengine:** Game v1
+
+### Features
+
+* **gameengine:** game engine now completely setup, still need few adjustments ([78b8be5](https://github.com/OGMikee/chess-opening-trainer/commit/78b8be5ad24948fe3d399a26968ebe2141e3738c))
+
 ### [0.1.6](https://github.com/OGMikee/chess-opening-trainer/compare/v0.1.5...v0.1.6) (2025-10-30)
 
 
