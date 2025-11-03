@@ -112,7 +112,12 @@ public class Game {
         if (piece == null || piece.getColor() != currentTurn){
             return new ArrayList<>();
         }
-        return MoveGenerator.generateMoves(board, from);
+        List<Move> moves = MoveGenerator.generateMoves(board, from, enPassantSquare);
+        if(piece.getType() == PieceType.KING){
+            moves.addAll(generateCastlingMoves(from));
+        }
+        moves.removeIf(this::doesMoveLeaveKingInCheck);
+        return moves;
     }
 
     public List<Move> getAllLegalMoves() {
@@ -136,7 +141,7 @@ public class Game {
                 Square square = new Square(j, i);
                 Piece piece = board.getPiece(square);
                 if (piece != null && piece.getColor() == color){
-                    allLegalMoves.addAll(MoveGenerator.generateMoves(board, square));
+                    allLegalMoves.addAll(MoveGenerator.generateMoves(board, square, enPassantSquare));
                 }
             }
         }
@@ -187,13 +192,6 @@ public class Game {
         return false;
     }
 
-    /**
-     * Get the winner (null if game not over or draw).
-     *
-     * TODO:
-     * - If checkmate, return the winner (opposite of current turn)
-     * - If stalemate or draw, return null
-     */
     public Color getWinner() {
         if (isGameOver()){
             if (isInCheck()){
@@ -353,14 +351,6 @@ public class Game {
         return piece.getColor() == Color.WHITE ? Character.toUpperCase(c) : c;
     }
 
-    /**
-     * Load position from FEN string.
-     *
-     * TODO:
-     * - Parse FEN string
-     * - Set up board with pieces
-     * - Set turn, castling rights, en passant, counters
-     */
     public void fromFEN(String fen) {
         String[] parts = fen.split(" ");
         if (parts.length != 6) {
@@ -370,10 +360,10 @@ public class Game {
         String[] ranks = parts[0].split("/");
         for (int i = 0; i < 8; i++) {
             int file = 0;
-            String rankStr = ranks[7 - i];  // FEN starts from rank 8
+            String rankStr = ranks[7 - i];
             for (char c : rankStr.toCharArray()) {
                 if (Character.isDigit(c)) {
-                    file += Character.getNumericValue(c);  // Skip empty squares
+                    file += Character.getNumericValue(c);
                 } else {
                     Piece piece = fenCharToPiece(c);
                     board.setPiece(new Square(file, i), piece);
@@ -408,6 +398,61 @@ public class Game {
         }
         return new Piece(type, color);
     }
+
+    private List<Move> generateCastlingMoves(Square kingSquare) {
+        List<Move> castlingMoves = new ArrayList<>();
+        Piece king = board.getPiece(kingSquare);
+        if (king == null || king.getType() != PieceType.KING || king.getColor() != currentTurn) {
+            return castlingMoves;
+        }
+        if (isInCheck()) {
+            return castlingMoves;
+        }
+        Color color = king.getColor();
+        int rank = color == Color.WHITE ? 0 : 7;
+        if (canCastleKingside(color)) {
+            Square f = new Square(5, rank);
+            Square g = new Square(6, rank);
+            if (board.isEmpty(f) && board.isEmpty(g)) {
+                if (!isSquareAttacked(f, color.opposite())) {
+                    if (!isSquareAttacked(g, color.opposite())) {
+                        castlingMoves.add(new Move(kingSquare, g, king, MoveType.CASTLE_KINGSIDE));
+                    }
+                }
+            }
+        }
+        if (canCastleQueenside(color)) {
+            Square b = new Square(1, rank);
+            Square c = new Square(2, rank);
+            Square d = new Square(3, rank);
+            if (board.isEmpty(b) && board.isEmpty(c) && board.isEmpty(d)) {
+                if (!isSquareAttacked(c, color.opposite()) && !isSquareAttacked(d, color.opposite())) {
+                    castlingMoves.add(new Move(kingSquare, c, king, MoveType.CASTLE_QUEENSIDE));
+                }
+            }
+        }
+        return castlingMoves;
+    }
+
+    private boolean isSquareAttacked(Square square, Color attackerColor) {
+        List<Move> attackerMoves = getAllLegalMovesForColor(attackerColor);
+        for (Move move : attackerMoves) {
+            if (move.getTo().equals(square)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean doesMoveLeaveKingInCheck(Move move) {
+        stateHistory.push(new GameState(this));
+        executeMove(move);
+        boolean inCheck = isInCheck();
+        GameState state = stateHistory.pop();
+        state.restore(this);
+        return inCheck;
+    }
+
 
     public Board getBoard() { return board; }
     public Color getCurrentTurn() { return currentTurn; }
