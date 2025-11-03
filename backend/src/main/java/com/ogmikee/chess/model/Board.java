@@ -70,4 +70,15 @@ public class Board {
         sb.append("  a b c d e f g h");
         return sb.toString();
     }
+
+    public Board copy(){
+        Board newBoard = new Board();
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                newBoard.squares[i][j] = this.squares[i][j];
+            }
+        }
+        return newBoard;
+    }
+
 }
