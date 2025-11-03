@@ -7,12 +7,12 @@ import java.util.List;
 
 public class MoveGenerator {
 
-    public static List<Move> generateMoves(Board board, Square from) {
+    public static List<Move> generateMoves(Board board, Square from, Square enPassantSquare) {
         Piece piece = board.getPiece(from);
         if (piece == null) return new ArrayList<>();
         switch (piece.getType()) {
             case PAWN:
-                return generatePawnMoves(board, from, piece);
+                return generatePawnMoves(board, from, piece, enPassantSquare);
             case KNIGHT:
                 return generateKnightMoves(board, from, piece);
             case BISHOP:
@@ -28,17 +28,22 @@ public class MoveGenerator {
         }
     }
 
-    private static List<Move> generatePawnMoves(Board board, Square from, Piece piece) {
+    private static List<Move> generatePawnMoves(Board board, Square from, Piece piece, Square enPassantSquare) {
         List<Move> moves = new ArrayList<>();
         int file = from.getFile();
         int rank = from.getRank();
         Color color = piece.getColor();
         int direction = (color == Color.WHITE) ? 1 : -1;
         int startRank = (color == Color.WHITE) ? 1 : 6;
+        int promotionRank = (color == Color.WHITE) ? 7 : 0;
         try{
             Square oneForward = new Square(file, rank + direction);
             if (board.getPiece(oneForward) == null){
-                moves.add(new Move(from, oneForward, piece));
+                if (oneForward.getRank() == promotionRank) {
+                    addPromotionMoves(moves, from, oneForward, piece);
+                } else {
+                    moves.add(new Move(from, oneForward, piece));
+                }
                 if (rank == startRank){
                     Square twoForward = new Square(file, rank + 2 * direction);
                     if (board.getPiece(twoForward) == null){
@@ -53,11 +58,30 @@ public class MoveGenerator {
                 Square diagonalSquare = new Square(file + captureDir, rank + direction);
                 Piece target = board.getPiece(diagonalSquare);
                 if (target != null && target.getColor() != color){
-                    moves.add(new Move(from, diagonalSquare, piece));
+                    if (diagonalSquare.getRank() == promotionRank) {
+                        addPromotionMoves(moves, from, diagonalSquare, piece);
+                    } else {
+                        moves.add(new Move(from, diagonalSquare, piece));
+                    }
                 }
             }catch (IllegalArgumentException e){}
         }
+        if (enPassantSquare != null){
+            int enPassantFile = enPassantSquare.getFile();
+            int enPassantRank = enPassantSquare.getRank();
+            if (Math.abs(file - enPassantFile) == 1 && rank + direction == enPassantRank){
+                moves.add(new Move(from, enPassantSquare, piece, MoveType.EN_PASSANT));
+            }
+        }
+
         return moves;
+    }
+
+    private static void addPromotionMoves(List<Move> moves, Square from, Square to, Piece piece) {
+        moves.add(new Move(from, to, piece, PieceType.QUEEN));
+        moves.add(new Move(from, to, piece, PieceType.ROOK));
+        moves.add(new Move(from, to, piece, PieceType.BISHOP));
+        moves.add(new Move(from, to, piece, PieceType.KNIGHT));
     }
 
     private static List<Move> generateKnightMoves(Board board, Square from, Piece piece) {
