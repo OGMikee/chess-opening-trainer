@@ -1,13 +1,12 @@
 package com.ogmikee.chess.opening;
 
+import com.ogmikee.chess.logic.Game;
 import com.ogmikee.chess.model.Color;
+import com.ogmikee.chess.model.Move;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Represents the complete opening tree for a repertoire.
- * Manages adding lines and traversing the tree.
- */
 public class OpeningTree {
     private OpeningNode root;
     private Color playerColor;
@@ -17,26 +16,6 @@ public class OpeningTree {
         this.root = new OpeningNode(null, true);
     }
 
-    /**
-     * Add a line of moves to the tree.
-     * Merges with existing branches where moves overlap.
-     *
-     * TODO:
-     * - Start at root node
-     * - For each move in the list:
-     *   - Determine if it's player's move or opponent's move
-     *   - Check if child with this move already exists (use findChild)
-     *   - If exists: navigate to that child
-     *   - If doesn't exist: create new node, add as child, navigate to it
-     * - This way, common move sequences share nodes
-     *
-     * Example:
-     * Line 1: ["e4", "e5", "Nf3", "Nc6"]
-     * Line 2: ["e4", "e5", "Bc4", "Nc6"]
-     * Result: e4 and e5 nodes are shared, then tree branches at move 3
-     *
-     * @param moves List of moves in SAN notation
-     */
     public void addLine(List<String> moves) {
         OpeningNode current = this.root;
         for (int i = 0; i < moves.size(); i++){
@@ -82,6 +61,19 @@ public class OpeningTree {
             current = child;
         }
         return current;
+    }
+    public boolean validateLine(List<String> moves) {
+        Game game = new Game();
+        for (String moveStr : moves) {
+            Move move = SanConverter.sanToMove(moveStr, game);
+            if (move == null) {
+                return false;
+            }
+            if (!game.makeMove(move)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public OpeningNode getRoot() {
