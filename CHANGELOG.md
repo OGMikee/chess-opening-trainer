@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/OGMikee/chess-opening-trainer/compare/v0.2.2...v0.2.3) (2025-11-11)
+
+
+### Features
+
+* **pgnparser:** added pgnParser and linked game to parser to opening ([6a28fae](https://github.com/OGMikee/chess-opening-trainer/commit/6a28fae432404b8377517aff6b99f01481444c6f))
+
 ### [0.2.2](https://github.com/OGMikee/chess-opening-trainer/compare/v0.2.1...v0.2.2) (2025-11-11)
 
 
