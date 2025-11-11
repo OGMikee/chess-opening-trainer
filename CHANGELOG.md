@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/OGMikee/chess-opening-trainer/compare/v0.2.1...v0.2.2) (2025-11-11)
+
+
+### Features
+
+* **opening tree:** created the tree for the chess training ([cbee748](https://github.com/OGMikee/chess-opening-trainer/commit/cbee74855853b7286d07dbb165910c5a74cd0abb))
+
 ### [0.2.1](https://github.com/OGMikee/chess-opening-trainer/compare/v0.2.0...v0.2.1) (2025-11-03)
 
 
