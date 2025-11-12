@@ -1,11 +1,22 @@
 package com.ogmikee.chess.service;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MoveResult {
     private boolean correct;
     private String computerMove;
     private boolean lineComplete;
 
-    public MoveResult(boolean correct, String computerMove, boolean lineComplete) {
+    public MoveResult() {
+    }
+
+    @JsonCreator
+    public MoveResult(
+            @JsonProperty("correct") boolean correct,
+            @JsonProperty("computerMove") String computerMove,
+            @JsonProperty("lineComplete") boolean lineComplete
+    ) {
         this.correct = correct;
         this.computerMove = computerMove;
         this.lineComplete = lineComplete;
