@@ -1,5 +1,9 @@
 package com.ogmikee.chess.opening;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +14,12 @@ public class OpeningNode {
     private boolean enabled;
     private List<OpeningNode> children;
 
-    public OpeningNode(String move, boolean isPlayerMove) {
+    public OpeningNode() {
+        this.enabled = true;
+        this.children = new ArrayList<>();
+    }
+    @JsonCreator
+    public OpeningNode(@JsonProperty("move") String move, @JsonProperty("isPlayerMove") boolean isPlayerMove){
         this.move = move;
         this.isPlayerMove = isPlayerMove;
         this.enabled = true;
@@ -32,6 +41,7 @@ public class OpeningNode {
         return !this.children.isEmpty();
     }
 
+    @JsonIgnore
     public List<OpeningNode> getEnabledChildren() {
         List<OpeningNode> enabledChildren = new ArrayList<>();
         for (OpeningNode node: this.children){

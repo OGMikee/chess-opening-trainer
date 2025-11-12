@@ -1,5 +1,8 @@
 package com.ogmikee.chess.opening;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ogmikee.chess.logic.Game;
 import com.ogmikee.chess.model.Color;
 import com.ogmikee.chess.model.Move;
@@ -11,7 +14,11 @@ public class OpeningTree {
     private OpeningNode root;
     private Color playerColor;
 
-    public OpeningTree(Color playerColor) {
+    public OpeningTree() {
+    }
+
+    @JsonCreator
+    public OpeningTree(@JsonProperty("playerColor") Color playerColor){
         this.playerColor = playerColor;
         this.root = new OpeningNode(null, true);
     }
@@ -36,6 +43,7 @@ public class OpeningTree {
         return moveIndex % 2 == 1;
     }
 
+    @JsonIgnore
     public List<OpeningNode> getAllPlayerNodes() {
         List<OpeningNode> allPlayerNodes = new ArrayList<>();
         collectPlayerNodes(this.root, allPlayerNodes);
@@ -82,5 +90,13 @@ public class OpeningTree {
 
     public Color getPlayerColor() {
         return playerColor;
+    }
+
+    public void setPlayerColor(Color playerColor) {
+        this.playerColor = playerColor;
+    }
+
+    public void setRoot(OpeningNode root) {
+        this.root = root;
     }
 }
