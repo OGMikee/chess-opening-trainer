@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/OGMikee/chess-opening-trainer/compare/v0.2.5...v0.2.6) (2025-11-12)
+
+
+### Features
+
+* **json serialization:** jSON Serialization of Opening trees ([d0a1653](https://github.com/OGMikee/chess-opening-trainer/commit/d0a16539b0b164fb5a8d0b6cada620f2dc6442ee))
+
 ### [0.2.5](https://github.com/OGMikee/chess-opening-trainer/compare/v0.2.4...v0.2.5) (2025-11-12)
 
 
