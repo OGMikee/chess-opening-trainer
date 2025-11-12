@@ -66,4 +66,61 @@ public class TrainingService {
         }
         return false;
     }
+
+    public PlaythroughSession startPlaythrough(OpeningTree tree, List<String> startPath) {
+        PlaythroughSession session = new PlaythroughSession(tree, startPath);
+        OpeningNode currentNode = session.getCurrentNode();
+        if (!currentNode.hasChildren()) {
+            session.setComplete(true);
+            return session;
+        }
+        List<OpeningNode> children = currentNode.getChildren();
+        if (!children.isEmpty() && !children.get(0).isPlayerMove()){
+            OpeningNode opponentMove = children.get(random.nextInt(children.size()));
+            Move move = SanConverter.sanToMove(opponentMove.getMove(), session.getGame());
+            if (move != null){
+                session.getGame().makeMove(move);
+            }
+            session.addMovePlayed(opponentMove.getMove());
+            session.setCurrentNode(opponentMove);
+            if(!opponentMove.hasChildren()){
+                session.setComplete(true);
+            }
+        }
+        return session;
+    }
+
+    public MoveResult processUserMove(PlaythroughSession session, String userMove) {
+        OpeningNode currentNode = session.getCurrentNode();
+        OpeningNode matchingChild = null;
+        for (OpeningNode child : currentNode.getEnabledChildren()){
+            if (child.getMove().equals(userMove)){
+                matchingChild = child;
+                break;
+            }
+        }
+        if (matchingChild == null) return new MoveResult(false, null, false);
+        Move move = SanConverter.sanToMove(userMove, session.getGame());
+        if (move != null )session.getGame().makeMove(move);
+        session.addMovePlayed(userMove);
+        session.setCurrentNode(matchingChild);
+        if (!matchingChild.hasChildren()){
+            session.setComplete(true);
+            return new MoveResult(true, null, true);
+        }
+        List<OpeningNode> opponentPossibleMoves = matchingChild.getEnabledChildren();
+        if (opponentPossibleMoves.isEmpty()){
+            session.setComplete(true);
+            return new MoveResult(true, null, true);
+        }
+        OpeningNode opponentNode = opponentPossibleMoves.get(random.nextInt(opponentPossibleMoves.size()));
+        String opponentMoveStr = opponentNode.getMove();
+        Move opponentMove = SanConverter.sanToMove(opponentMoveStr, session.getGame());
+        if (opponentMove!= null) session.getGame().makeMove(opponentMove);
+        session.addMovePlayed(opponentMoveStr);
+        session.setCurrentNode(opponentNode);
+        boolean lineComplete = !opponentNode.hasChildren();
+        if (lineComplete) session.setComplete(true);
+        return new MoveResult(true, opponentMoveStr, lineComplete);
+    }
 }
