@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/OGMikee/chess-opening-trainer/compare/v0.2.6...v0.3.0) (2025-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api to front:** Backend
+
+### Features
+
+* **api to front:** aPI to front ([ec6df18](https://github.com/OGMikee/chess-opening-trainer/commit/ec6df18c81aaa71c357eaa136481edbfb6caf5bd))
+
 ### [0.2.6](https://github.com/OGMikee/chess-opening-trainer/compare/v0.2.5...v0.2.6) (2025-11-12)
 
 
