@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.7...v0.3.8) (2025-11-22)
+
+
+### Bug Fixes
+
+* **deployment:** updated to Java21 ([1b104b5](https://github.com/OGMikee/chess-opening-trainer/commit/1b104b53cc1afa7591da1b13edcc5bcc16f1de60))
+
 ### [0.3.7](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.6...v0.3.7) (2025-11-22)
 
 
