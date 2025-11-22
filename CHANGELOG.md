@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.6...v0.3.7) (2025-11-22)
+
+
+### Bug Fixes
+
+* **dockerfile:** java18 in dockerfile to match pom.xml ([00903f5](https://github.com/OGMikee/chess-opening-trainer/commit/00903f56d15902faffe7f9163db8b848295f8fc1))
+
 ### [0.3.6](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.5...v0.3.6) (2025-11-22)
 
 
