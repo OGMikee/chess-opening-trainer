@@ -44,8 +44,13 @@ public class TrainingController {
 
     @PostMapping("/playthrough/move")
     public MoveResult processMove(@RequestBody Map<String, Object> request) {
-        PlaythroughSession session = objectMapper.convertValue(request.get("session"), PlaythroughSession.class);
+        OpeningTree tree = objectMapper.convertValue(request.get("tree"), OpeningTree.class);
+        @SuppressWarnings("unchecked")
+        List<String> movesPlayed = (List<String>) request.get("movesPlayed");
         String move = (String) request.get("move");
+
+        PlaythroughSession session = new PlaythroughSession(tree, movesPlayed);
+
         return trainingService.processUserMove(session, move);
     }
 }

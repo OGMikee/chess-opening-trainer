@@ -14,28 +14,49 @@ public class TrainingService {
     private Random random = new Random();
 
     public QuizQuestion getRandomQuiz(OpeningTree tree) {
-        List<OpeningNode> allPlayerNodes = tree.getAllPlayerNodes();
-        if (allPlayerNodes.isEmpty()) return null;
-        List<OpeningNode> nodesWithChildren = new ArrayList<>();
-        for (OpeningNode node : allPlayerNodes){
-            if (node.hasChildren()){
-                nodesWithChildren.add(node);
-            }
-        }
-        if (nodesWithChildren.isEmpty()) return null;
-        OpeningNode randomNode = nodesWithChildren.get(random.nextInt(nodesWithChildren.size()));
+        List<OpeningNode> eligibleNodes = new ArrayList<>();
+        collectEligibleNodes(tree.getRoot(), eligibleNodes);
+
+        if (eligibleNodes.isEmpty()) return null;
+
+        OpeningNode randomNode = eligibleNodes.get(random.nextInt(eligibleNodes.size()));
         List<String> path = getPathToNode(tree, randomNode);
+
         Game game = new Game();
-        for (String moveStr : path){
+        for (String moveStr : path) {
             Move move = SanConverter.sanToMove(moveStr, game);
             if (move != null) game.makeMove(move);
         }
+
         String fen = game.toFEN();
         List<String> correctMoves = new ArrayList<>();
-        for (OpeningNode child: randomNode.getEnabledChildren()){
-            correctMoves.add(child.getMove());
+        for (OpeningNode child : randomNode.getEnabledChildren()) {
+            if (child.isPlayerMove()) {
+                correctMoves.add(child.getMove());
+            }
         }
+
         return new QuizQuestion(fen, correctMoves, path);
+    }
+
+    private void collectEligibleNodes(OpeningNode node, List<OpeningNode> eligibleNodes) {
+        if (node.hasChildren()) {
+            boolean hasPlayerMoveChildren = false;
+            for (OpeningNode child : node.getChildren()) {
+                if (child.isPlayerMove() && child.isEnabled()) {
+                    hasPlayerMoveChildren = true;
+                    break;
+                }
+            }
+
+            if (hasPlayerMoveChildren) {
+                eligibleNodes.add(node);
+            }
+
+            for (OpeningNode child : node.getChildren()) {
+                collectEligibleNodes(child, eligibleNodes);
+            }
+        }
     }
 
     private List<String> getPathToNode(OpeningTree tree, OpeningNode targetNode) {
@@ -59,8 +80,8 @@ public class TrainingService {
         OpeningNode node = tree.findNode(path);
         if (node == null) return false;
         List<OpeningNode> allChildren = node.getEnabledChildren();
-        for (OpeningNode child : allChildren){
-            if (userMove.equals(child.getMove())){
+        for (OpeningNode child : allChildren) {
+            if (userMove.equals(child.getMove())) {
                 return true;
             }
         }
@@ -75,16 +96,19 @@ public class TrainingService {
             return session;
         }
         List<OpeningNode> children = currentNode.getChildren();
-        if (!children.isEmpty() && !children.get(0).isPlayerMove()){
-            OpeningNode opponentMove = children.get(random.nextInt(children.size()));
-            Move move = SanConverter.sanToMove(opponentMove.getMove(), session.getGame());
-            if (move != null){
-                session.getGame().makeMove(move);
-            }
-            session.addMovePlayed(opponentMove.getMove());
-            session.setCurrentNode(opponentMove);
-            if(!opponentMove.hasChildren()){
-                session.setComplete(true);
+        if (!children.isEmpty() && !children.get(0).isPlayerMove()) {
+            List<OpeningNode> enabledChildren = currentNode.getEnabledChildren();
+            if (!enabledChildren.isEmpty()) {
+                OpeningNode opponentMove = enabledChildren.get(random.nextInt(enabledChildren.size()));
+                Move move = SanConverter.sanToMove(opponentMove.getMove(), session.getGame());
+                if (move != null) {
+                    session.getGame().makeMove(move);
+                }
+                session.addMovePlayed(opponentMove.getMove());
+                session.setCurrentNode(opponentMove);
+                if (!opponentMove.hasChildren()) {
+                    session.setComplete(true);
+                }
             }
         }
         return session;
@@ -93,30 +117,30 @@ public class TrainingService {
     public MoveResult processUserMove(PlaythroughSession session, String userMove) {
         OpeningNode currentNode = session.getCurrentNode();
         OpeningNode matchingChild = null;
-        for (OpeningNode child : currentNode.getEnabledChildren()){
-            if (child.getMove().equals(userMove)){
+        for (OpeningNode child : currentNode.getEnabledChildren()) {
+            if (child.getMove().equals(userMove)) {
                 matchingChild = child;
                 break;
             }
         }
         if (matchingChild == null) return new MoveResult(false, null, false);
         Move move = SanConverter.sanToMove(userMove, session.getGame());
-        if (move != null )session.getGame().makeMove(move);
+        if (move != null) session.getGame().makeMove(move);
         session.addMovePlayed(userMove);
         session.setCurrentNode(matchingChild);
-        if (!matchingChild.hasChildren()){
+        if (!matchingChild.hasChildren()) {
             session.setComplete(true);
             return new MoveResult(true, null, true);
         }
         List<OpeningNode> opponentPossibleMoves = matchingChild.getEnabledChildren();
-        if (opponentPossibleMoves.isEmpty()){
+        if (opponentPossibleMoves.isEmpty()) {
             session.setComplete(true);
             return new MoveResult(true, null, true);
         }
         OpeningNode opponentNode = opponentPossibleMoves.get(random.nextInt(opponentPossibleMoves.size()));
         String opponentMoveStr = opponentNode.getMove();
         Move opponentMove = SanConverter.sanToMove(opponentMoveStr, session.getGame());
-        if (opponentMove!= null) session.getGame().makeMove(opponentMove);
+        if (opponentMove != null) session.getGame().makeMove(opponentMove);
         session.addMovePlayed(opponentMoveStr);
         session.setCurrentNode(opponentNode);
         boolean lineComplete = !opponentNode.hasChildren();

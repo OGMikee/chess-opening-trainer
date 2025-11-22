@@ -1,0 +1,168 @@
+.chess-board-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 80px);
+    grid-template-rows: repeat(8, 80px);
+    border: 2px solid #2d2d2d;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.square {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.square.light {
+    background-color: #d4dce5;
+}
+
+.square.dark {
+    background-color: #8ca2ad;
+}
+
+.square:hover {
+    filter: brightness(1.05);
+}
+
+.square.selected {
+    background-color: #7fa8d1 !important;
+}
+
+.square.highlighted {
+    background-color: rgba(255, 255, 0, 0.4) !important;
+}
+
+.piece {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    cursor: grab;
+    opacity: 1 !important;
+}
+
+.piece:active {
+    cursor: grabbing;
+}
+
+.legal-move-indicator {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.square.dark .legal-move-indicator {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.rank-label,
+.file-label {
+    position: absolute;
+    font-size: 11px;
+    font-weight: bold;
+    user-select: none;
+    pointer-events: none;
+}
+
+.square.light .rank-label,
+.square.light .file-label {
+    color: #8ca2ad;
+}
+
+.square.dark .rank-label,
+.square.dark .file-label {
+    color: #d4dce5;
+}
+
+.rank-label {
+    top: 3px;
+    left: 4px;
+}
+
+.file-label {
+    bottom: 3px;
+    right: 4px;
+}
+
+.wrong-move-x {
+    position: absolute;
+    font-size: 60px;
+    color: #f44336;
+    font-weight: bold;
+    animation: wrongMoveAnim 0.5s ease-out;
+    pointer-events: none;
+    text-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+}
+
+@keyframes wrongMoveAnim {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.piece[draggable="true"] {
+    -webkit-user-drag: element;
+}
+
+img.piece {
+    pointer-events: auto;
+}
+
+.drag-preview {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 1 !important;
+}
+
+.chess-board-wrapper.small .chess-board {
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(8, 40px);
+    display: grid;
+}
+
+.chess-board-wrapper.small .square {
+    width: 40px;
+    height: 40px;
+}
+
+.chess-board-wrapper.small .rank-label,
+.chess-board-wrapper.small .file-label {
+    font-size: 7px;
+}
+
+.chess-board-wrapper.small .rank-label {
+    top: 2px;
+    left: 2px;
+}
+
+.chess-board-wrapper.small .file-label {
+    bottom: 2px;
+    right: 2px;
+}
