@@ -1,4 +1,4 @@
-FROM maven:3.9-eclipse-temurin-18 AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY backend/pom.xml .
 COPY backend/mvnw .
@@ -7,7 +7,7 @@ COPY backend/.mvn .mvn
 COPY backend/src src
 RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:18-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/chess-backend-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
