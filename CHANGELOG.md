@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.10](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.9...v0.3.10) (2025-11-22)
+
+
+### Bug Fixes
+
+* **cors config:** removed allowCredentials from CORS config ([925555a](https://github.com/OGMikee/chess-opening-trainer/commit/925555a4d780fae384e6747427e2decfa2136f40))
+
 ### [0.3.9](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.8...v0.3.9) (2025-11-22)
 
 
