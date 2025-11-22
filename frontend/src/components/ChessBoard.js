@@ -1,3 +1,4 @@
+import API_URL from '../config';
 import React, { useState } from 'react';
 import './ChessBoard.css';
 import axios from 'axios';
@@ -33,7 +34,7 @@ function ChessBoard({ fen, onMove, highlightedSquares = [], showWrongMove = fals
 
     const fetchLegalMoves = async (square) => {
         try {
-            const response = await axios.post('http://localhost:8080/api/chess/legal-moves', {
+            const response = await axios.post(`${API_URL}/api/chess/legal-moves`, {
                 fen: fen,
                 square: square
             });

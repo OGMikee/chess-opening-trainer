@@ -1,3 +1,4 @@
+import API_URL from '../config';
 import React, { useState } from 'react';
 import './OpeningEditor.css';
 import ChessBoard from './ChessBoard';
@@ -14,13 +15,13 @@ function OpeningEditor({ currentOpening, setCurrentOpening }) {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8080/api/opening/parse-pgn', {
+            const response = await axios.post(`${API_URL}/api/opening/parse-pgn`, {
                 pgn: pgnInput
             });
             const moves = response.data.moves;
             setParsedMoves(moves);
             console.log('Parsed moves:', moves);
-            const validationResponse = await axios.post('http://localhost:8080/api/opening/validate-line', {
+            const validationResponse = await axios.post(`${API_URL}/api/opening/validate-line`, {
                 moves: moves
             });
             setIsValid(validationResponse.data.valid);

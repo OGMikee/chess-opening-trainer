@@ -1,3 +1,4 @@
+import API_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import './QuizMode.css';
 import ChessBoard from './ChessBoard';
@@ -11,7 +12,7 @@ function QuizMode({ currentOpening }) {
     const [score, setScore] = useState({ correct: 0, total: 0 });
     const getNewQuiz = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/training/quiz', currentOpening.tree);
+            const response = await axios.post(`${API_URL}/api/training/quiz`, currentOpening.tree);
             setQuizQuestion(response.data);
             setSelectedSquare(null);
             setUserAnswer('');
@@ -27,7 +28,7 @@ function QuizMode({ currentOpening }) {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8080/api/training/quiz/check', {
+            const response = await axios.post(`${API_URL}/api/training/quiz/check`, {
                 tree: currentOpening.tree,
                 path: quizQuestion.pathToPosition,
                 move: userAnswer.trim()

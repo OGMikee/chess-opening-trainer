@@ -26,7 +26,6 @@ frontend/dist/
 frontend/.env.local
 frontend/.env.development.local
 frontend/.env.test.local
-frontend/.env.production.local
 .DS_Store
 Thumbs.db
 logs/

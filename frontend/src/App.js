@@ -1,3 +1,4 @@
+import API_URL from './config';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import ChessBoard from './components/ChessBoard';
@@ -23,7 +24,7 @@ function App() {
         if (!quizQuestion) return;
 
         try {
-            const response = await axios.post('http://localhost:8080/api/chess/execute-move', {
+            const response = await axios.post(`${API_URL}/api/chess/execute-move`, {
                 fen: quizQuestion.fen,
                 from: from,
                 to: to
@@ -58,7 +59,7 @@ function App() {
 
                 setTimeout(async () => {
                     try {
-                        const response = await axios.post('http://localhost:8080/api/training/quiz', currentOpening.tree);
+                        const response = await axios.post(`${API_URL}/api/training/quiz`, currentOpening.tree);
                         setQuizQuestion(response.data);
                         setQuizFeedback(null);
                     } catch (error) {
@@ -86,7 +87,7 @@ function App() {
         if (!playthroughSession) return;
 
         try {
-            const moveResponse = await axios.post('http://localhost:8080/api/chess/execute-move', {
+            const moveResponse = await axios.post(`${API_URL}/api/chess/execute-move`, {
                 fen: playthroughSession.gameFen,
                 from: from,
                 to: to
@@ -102,7 +103,7 @@ function App() {
 
             const move = moveResponse.data.move;
 
-            const response = await axios.post('http://localhost:8080/api/training/playthrough/move', {
+            const response = await axios.post(`${API_URL}/api/training/playthrough/move`, {
                 tree: currentOpening.tree,
                 movesPlayed: playthroughSession.movesPlayed,
                 move: move
@@ -117,7 +118,7 @@ function App() {
                     newMovesPlayed.push(result.computerMove);
                 }
 
-                const newFenResponse = await axios.post('http://localhost:8080/api/chess/get-position', {
+                const newFenResponse = await axios.post(`${API_URL}/api/chess/get-position`, {
                     moves: newMovesPlayed
                 });
 
@@ -208,7 +209,7 @@ function HomeBoard({ currentOpening, setCurrentOpening, selectedPath, setSelecte
         if (selectedPath && selectedPath.length > 0) {
             const fetchPosition = async () => {
                 try {
-                    const response = await axios.post('http://localhost:8080/api/chess/get-position', {
+                    const response = await axios.post(`${API_URL}/api/chess/get-position`, {
                         moves: selectedPath
                     });
                     if (response.data.fen) {
@@ -306,7 +307,7 @@ function EditorBoard({ currentOpening, startFromPath, isRecording, moveHistory, 
         if (startFromPath && startFromPath.length > 0) {
             const fetchPosition = async () => {
                 try {
-                    const response = await axios.post('http://localhost:8080/api/chess/get-position', {
+                    const response = await axios.post(`${API_URL}/api/chess/get-position`, {
                         moves: startFromPath
                     });
                     if (response.data.fen) {
@@ -326,7 +327,7 @@ function EditorBoard({ currentOpening, startFromPath, isRecording, moveHistory, 
         if (!isRecording) {
             if (startFromPath && startFromPath.length > 0) {
                 const fetchPosition = async () => {
-                    const response = await axios.post('http://localhost:8080/api/chess/get-position', {
+                    const response = await axios.post(`${API_URL}/api/chess/get-position`, {
                         moves: startFromPath
                     });
                     if (response.data.fen) {
@@ -353,7 +354,7 @@ function EditorBoard({ currentOpening, startFromPath, isRecording, moveHistory, 
         if (!isRecording) return;
 
         try {
-            const response = await axios.post('http://localhost:8080/api/chess/execute-move', {
+            const response = await axios.post(`${API_URL}/api/chess/execute-move`, {
                 fen: boardFen,
                 from: from,
                 to: to
@@ -387,14 +388,14 @@ function EditorPanel({ currentOpening, setCurrentOpening, startFromPath, setStar
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/api/opening/parse-pgn', {
+            const response = await axios.post(`${API_URL}/api/opening/parse-pgn`, {
                 pgn: pgnInput
             });
 
             const moves = response.data.moves;
             const fullLine = [...(startFromPath || []), ...moves];
 
-            const validationResponse = await axios.post('http://localhost:8080/api/opening/validate-line', {
+            const validationResponse = await axios.post(`${API_URL}/api/opening/validate-line`, {
                 moves: fullLine
             });
 
@@ -432,7 +433,7 @@ function EditorPanel({ currentOpening, setCurrentOpening, startFromPath, setStar
 
         try {
             const fullLine = [...(startFromPath || []), ...moveHistory];
-            const response = await axios.post('http://localhost:8080/api/opening/validate-line', {
+            const response = await axios.post(`${API_URL}/api/opening/validate-line`, {
                 moves: fullLine
             });
 
@@ -630,7 +631,7 @@ function QuizPanel({ currentOpening, quizQuestion, setQuizQuestion, quizScore, q
         if (!currentOpening) return;
 
         try {
-            const response = await axios.post('http://localhost:8080/api/training/quiz', currentOpening.tree);
+            const response = await axios.post(`${API_URL}/api/training/quiz`, currentOpening.tree);
             setQuizQuestion(response.data);
             setShowHelp(false);
         } catch (error) {
@@ -745,7 +746,7 @@ function PlaythroughPanel({ currentOpening, setCurrentOpening, playthroughSessio
         if (!currentOpening) return;
 
         try {
-            const response = await axios.post('http://localhost:8080/api/training/playthrough/start', {
+            const response = await axios.post(`${API_URL}/api/training/playthrough/start`, {
                 tree: currentOpening.tree,
                 startPath: playthroughStartPath
             });

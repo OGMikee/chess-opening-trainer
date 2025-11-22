@@ -1,3 +1,4 @@
+import API_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import './PlaythroughMode.css';
 import ChessBoard from './ChessBoard';
@@ -11,7 +12,7 @@ function PlaythroughMode({ currentOpening }) {
 
     const startSession = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/training/playthrough/start', {
+            const response = await axios.post(`${API_URL}/api/training/playthrough/start`, {
                 tree: currentOpening.tree,
                 startPath: []
             });
@@ -30,7 +31,7 @@ function PlaythroughMode({ currentOpening }) {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8080/api/training/playthrough/move', {
+            const response = await axios.post(`${API_URL}/api/training/playthrough/move`, {
                 session: session,
                 move: userMove.trim()
             });
