@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.2...v0.3.3) (2025-11-22)
+
+
+### Features
+
+* **junit tests ci:** add JUnit tests and CI workflow ([d641350](https://github.com/OGMikee/chess-opening-trainer/commit/d64135015912ad16ab19370965be46af95c63788))
+
 ### [0.3.2](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.1...v0.3.2) (2025-11-22)
 
 
