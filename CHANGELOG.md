@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.6](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.5...v0.3.6) (2025-11-22)
+
+
+### Bug Fixes
+
+* **ci:** java18 ci for pom.xml ([a22d32c](https://github.com/OGMikee/chess-opening-trainer/commit/a22d32cd41e4ba3296fa6bb5e8bd6f2297e0b100))
+
 ### [0.3.5](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.4...v0.3.5) (2025-11-22)
 
 ### [0.3.4](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.3...v0.3.4) (2025-11-22)
