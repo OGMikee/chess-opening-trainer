@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.14](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.13...v0.3.14) (2025-11-27)
+
+
+### Features
+
+* **app:** now able to reduce the left and right panels ([2609914](https://github.com/OGMikee/chess-opening-trainer/commit/2609914991f31b9db3c940787e545a5b1f4572d7))
+
 ### [0.3.13](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.12...v0.3.13) (2025-11-27)
 
 
