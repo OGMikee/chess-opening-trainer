@@ -6,6 +6,14 @@ A full-stack web application for building, practicing, and mastering chess openi
 
 **[Try it now: chess-opening-trainer-omega.vercel.app](https://chess-opening-trainer-omega.vercel.app)**
 
+### Download this sample opening file to get started:
+
+**[📥 Download: caro-kann-sample.opening](https://raw.githubusercontent.com/OGMikee/chess-opening-trainer/main/sample-openings/Caro-Kann.opening)**
+
+This file contains a few lines from the Caro-Kann Defense. After downloading:
+1. Visit the app and click "Upload Opening" in the right panel
+2. Select the downloaded file
+3. Start training immediately with Quiz or Play-through mode!
 ## ✨ Features
 
 ### 📚 Opening Management

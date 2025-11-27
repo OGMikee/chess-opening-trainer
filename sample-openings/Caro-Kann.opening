@@ -1,0 +1,1021 @@
+{
+  "version": "1.0",
+  "name": "Caro-Kann",
+  "tree": {
+    "playerColor": "BLACK",
+    "root": {
+      "move": null,
+      "enabled": true,
+      "children": [
+        {
+          "move": "e4",
+          "enabled": true,
+          "children": [
+            {
+              "move": "c6",
+              "enabled": true,
+              "children": [
+                {
+                  "move": "d4",
+                  "enabled": true,
+                  "children": [
+                    {
+                      "move": "d5",
+                      "enabled": true,
+                      "children": [
+                        {
+                          "move": "e5",
+                          "enabled": true,
+                          "children": [
+                            {
+                              "move": "Bf5",
+                              "enabled": true,
+                              "children": [
+                                {
+                                  "move": "Bd3",
+                                  "enabled": true,
+                                  "children": [
+                                    {
+                                      "move": "Bxd3",
+                                      "enabled": true,
+                                      "children": [
+                                        {
+                                          "move": "Qxd3",
+                                          "enabled": true,
+                                          "children": [
+                                            {
+                                              "move": "e6",
+                                              "enabled": true,
+                                              "children": [],
+                                              "playerMove": true
+                                            }
+                                          ],
+                                          "playerMove": false
+                                        }
+                                      ],
+                                      "playerMove": true
+                                    }
+                                  ],
+                                  "playerMove": false
+                                },
+                                {
+                                  "move": "Nf3",
+                                  "enabled": true,
+                                  "children": [
+                                    {
+                                      "move": "e6",
+                                      "enabled": true,
+                                      "children": [
+                                        {
+                                          "move": "Be2",
+                                          "enabled": true,
+                                          "children": [
+                                            {
+                                              "move": "c5",
+                                              "enabled": true,
+                                              "children": [
+                                                {
+                                                  "move": "O-O",
+                                                  "enabled": true,
+                                                  "children": [
+                                                    {
+                                                      "move": "Nc6",
+                                                      "enabled": true,
+                                                      "children": [
+                                                        {
+                                                          "move": "c3",
+                                                          "enabled": true,
+                                                          "children": [
+                                                            {
+                                                              "move": "Nge7",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "a3",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "Bg4",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Bd2",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "Nf5",
+                                                                              "enabled": true,
+                                                                              "children": [],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            }
+                                                          ],
+                                                          "playerMove": false
+                                                        },
+                                                        {
+                                                          "move": "Be3",
+                                                          "enabled": true,
+                                                          "children": [
+                                                            {
+                                                              "move": "cxd4",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "Nxd4",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "Nxd4",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Bxd4",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "Ne7",
+                                                                              "enabled": true,
+                                                                              "children": [
+                                                                                {
+                                                                                  "move": "c4",
+                                                                                  "enabled": true,
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "move": "dxc4",
+                                                                                      "enabled": true,
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "move": "Bxc4",
+                                                                                          "enabled": true,
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "move": "Nc6",
+                                                                                              "enabled": true,
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "move": "Bb5",
+                                                                                                  "enabled": true,
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "move": "Be7",
+                                                                                                      "enabled": true,
+                                                                                                      "children": [
+                                                                                                        {
+                                                                                                          "move": "Nc3",
+                                                                                                          "enabled": true,
+                                                                                                          "children": [
+                                                                                                            {
+                                                                                                              "move": "O-O",
+                                                                                                              "enabled": true,
+                                                                                                              "children": [],
+                                                                                                              "playerMove": true
+                                                                                                            }
+                                                                                                          ],
+                                                                                                          "playerMove": false
+                                                                                                        },
+                                                                                                        {
+                                                                                                          "move": "Qa4",
+                                                                                                          "enabled": true,
+                                                                                                          "children": [
+                                                                                                            {
+                                                                                                              "move": "O-O",
+                                                                                                              "enabled": true,
+                                                                                                              "children": [
+                                                                                                                {
+                                                                                                                  "move": "Bxc6",
+                                                                                                                  "enabled": true,
+                                                                                                                  "children": [
+                                                                                                                    {
+                                                                                                                      "move": "bxc6",
+                                                                                                                      "enabled": true,
+                                                                                                                      "children": [
+                                                                                                                        {
+                                                                                                                          "move": "Rd1",
+                                                                                                                          "enabled": true,
+                                                                                                                          "children": [
+                                                                                                                            {
+                                                                                                                              "move": "Qc7",
+                                                                                                                              "enabled": true,
+                                                                                                                              "children": [],
+                                                                                                                              "playerMove": true
+                                                                                                                            }
+                                                                                                                          ],
+                                                                                                                          "playerMove": false
+                                                                                                                        }
+                                                                                                                      ],
+                                                                                                                      "playerMove": true
+                                                                                                                    }
+                                                                                                                  ],
+                                                                                                                  "playerMove": false
+                                                                                                                }
+                                                                                                              ],
+                                                                                                              "playerMove": true
+                                                                                                            }
+                                                                                                          ],
+                                                                                                          "playerMove": false
+                                                                                                        }
+                                                                                                      ],
+                                                                                                      "playerMove": true
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "playerMove": false
+                                                                                                }
+                                                                                              ],
+                                                                                              "playerMove": true
+                                                                                            }
+                                                                                          ],
+                                                                                          "playerMove": false
+                                                                                        }
+                                                                                      ],
+                                                                                      "playerMove": true
+                                                                                    }
+                                                                                  ],
+                                                                                  "playerMove": false
+                                                                                }
+                                                                              ],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            }
+                                                          ],
+                                                          "playerMove": false
+                                                        }
+                                                      ],
+                                                      "playerMove": true
+                                                    }
+                                                  ],
+                                                  "playerMove": false
+                                                },
+                                                {
+                                                  "move": "Be3",
+                                                  "enabled": true,
+                                                  "children": [
+                                                    {
+                                                      "move": "Qb6",
+                                                      "enabled": true,
+                                                      "children": [
+                                                        {
+                                                          "move": "Nc3",
+                                                          "enabled": true,
+                                                          "children": [
+                                                            {
+                                                              "move": "Qxb2",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "Qb1",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "Qxb1",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Rxb1",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "c4",
+                                                                              "enabled": true,
+                                                                              "children": [
+                                                                                {
+                                                                                  "move": "Rxb7",
+                                                                                  "enabled": true,
+                                                                                  "children": [],
+                                                                                  "playerMove": false
+                                                                                }
+                                                                              ],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            },
+                                                            {
+                                                              "move": "Nc6",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "dxc5",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "Bxc5",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Bxc5",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "Qxc5",
+                                                                              "enabled": true,
+                                                                              "children": [
+                                                                                {
+                                                                                  "move": "Nb5",
+                                                                                  "enabled": true,
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "move": "Kf8",
+                                                                                      "enabled": true,
+                                                                                      "children": [],
+                                                                                      "playerMove": true
+                                                                                    }
+                                                                                  ],
+                                                                                  "playerMove": false
+                                                                                }
+                                                                              ],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            }
+                                                          ],
+                                                          "playerMove": false
+                                                        }
+                                                      ],
+                                                      "playerMove": true
+                                                    }
+                                                  ],
+                                                  "playerMove": false
+                                                }
+                                              ],
+                                              "playerMove": true
+                                            }
+                                          ],
+                                          "playerMove": false
+                                        }
+                                      ],
+                                      "playerMove": true
+                                    }
+                                  ],
+                                  "playerMove": false
+                                },
+                                {
+                                  "move": "h4",
+                                  "enabled": true,
+                                  "children": [
+                                    {
+                                      "move": "h5",
+                                      "enabled": true,
+                                      "children": [
+                                        {
+                                          "move": "c4",
+                                          "enabled": true,
+                                          "children": [
+                                            {
+                                              "move": "e6",
+                                              "enabled": true,
+                                              "children": [
+                                                {
+                                                  "move": "Nc3",
+                                                  "enabled": true,
+                                                  "children": [
+                                                    {
+                                                      "move": "Ne7",
+                                                      "enabled": true,
+                                                      "children": [
+                                                        {
+                                                          "move": "Nge2",
+                                                          "enabled": true,
+                                                          "children": [
+                                                            {
+                                                              "move": "Nd7",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "Ng3",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "Bg6",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Bg5",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "Qb6",
+                                                                              "enabled": true,
+                                                                              "children": [
+                                                                                {
+                                                                                  "move": "Qd2",
+                                                                                  "enabled": true,
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "move": "dxc4",
+                                                                                      "enabled": true,
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "move": "Bxc4",
+                                                                                          "enabled": true,
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "move": "O-O-O",
+                                                                                              "enabled": true,
+                                                                                              "children": [],
+                                                                                              "playerMove": true
+                                                                                            }
+                                                                                          ],
+                                                                                          "playerMove": false
+                                                                                        }
+                                                                                      ],
+                                                                                      "playerMove": true
+                                                                                    }
+                                                                                  ],
+                                                                                  "playerMove": false
+                                                                                }
+                                                                              ],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            }
+                                                          ],
+                                                          "playerMove": false
+                                                        }
+                                                      ],
+                                                      "playerMove": true
+                                                    }
+                                                  ],
+                                                  "playerMove": false
+                                                }
+                                              ],
+                                              "playerMove": true
+                                            }
+                                          ],
+                                          "playerMove": false
+                                        }
+                                      ],
+                                      "playerMove": true
+                                    }
+                                  ],
+                                  "playerMove": false
+                                }
+                              ],
+                              "playerMove": true
+                            }
+                          ],
+                          "playerMove": false
+                        },
+                        {
+                          "move": "exd5",
+                          "enabled": true,
+                          "children": [
+                            {
+                              "move": "cxd5",
+                              "enabled": true,
+                              "children": [
+                                {
+                                  "move": "Bd3",
+                                  "enabled": true,
+                                  "children": [
+                                    {
+                                      "move": "Nc6",
+                                      "enabled": true,
+                                      "children": [
+                                        {
+                                          "move": "Nf3",
+                                          "enabled": true,
+                                          "children": [
+                                            {
+                                              "move": "Bg4",
+                                              "enabled": true,
+                                              "children": [],
+                                              "playerMove": true
+                                            }
+                                          ],
+                                          "playerMove": false
+                                        },
+                                        {
+                                          "move": "c3",
+                                          "enabled": true,
+                                          "children": [
+                                            {
+                                              "move": "Nf6",
+                                              "enabled": true,
+                                              "children": [
+                                                {
+                                                  "move": "Bf4",
+                                                  "enabled": true,
+                                                  "children": [
+                                                    {
+                                                      "move": "Bg4",
+                                                      "enabled": true,
+                                                      "children": [
+                                                        {
+                                                          "move": "Qb3",
+                                                          "enabled": true,
+                                                          "children": [
+                                                            {
+                                                              "move": "Na5",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "Qa4",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "Bd7",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Qc2",
+                                                                          "enabled": true,
+                                                                          "children": [],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            },
+                                                            {
+                                                              "move": "Qd7",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "Nd2",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "e6",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Ngf3",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "Bd6",
+                                                                              "enabled": true,
+                                                                              "children": [
+                                                                                {
+                                                                                  "move": "Bxd6",
+                                                                                  "enabled": true,
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "move": "Qxd6",
+                                                                                      "enabled": true,
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "move": "Qxb7",
+                                                                                          "enabled": true,
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "move": "Rb8",
+                                                                                              "enabled": true,
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "move": "Qa6",
+                                                                                                  "enabled": true,
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "move": "O-O",
+                                                                                                      "enabled": true,
+                                                                                                      "children": [],
+                                                                                                      "playerMove": true
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "playerMove": false
+                                                                                                }
+                                                                                              ],
+                                                                                              "playerMove": true
+                                                                                            }
+                                                                                          ],
+                                                                                          "playerMove": false
+                                                                                        }
+                                                                                      ],
+                                                                                      "playerMove": true
+                                                                                    }
+                                                                                  ],
+                                                                                  "playerMove": false
+                                                                                }
+                                                                              ],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            }
+                                                          ],
+                                                          "playerMove": false
+                                                        }
+                                                      ],
+                                                      "playerMove": true
+                                                    }
+                                                  ],
+                                                  "playerMove": false
+                                                }
+                                              ],
+                                              "playerMove": true
+                                            }
+                                          ],
+                                          "playerMove": false
+                                        }
+                                      ],
+                                      "playerMove": true
+                                    }
+                                  ],
+                                  "playerMove": false
+                                },
+                                {
+                                  "move": "c4",
+                                  "enabled": true,
+                                  "children": [
+                                    {
+                                      "move": "Nf6",
+                                      "enabled": true,
+                                      "children": [
+                                        {
+                                          "move": "Nc3",
+                                          "enabled": true,
+                                          "children": [
+                                            {
+                                              "move": "Nc6",
+                                              "enabled": true,
+                                              "children": [
+                                                {
+                                                  "move": "Nf3",
+                                                  "enabled": true,
+                                                  "children": [
+                                                    {
+                                                      "move": "Bg4",
+                                                      "enabled": true,
+                                                      "children": [
+                                                        {
+                                                          "move": "cxd5",
+                                                          "enabled": true,
+                                                          "children": [
+                                                            {
+                                                              "move": "Nxd5",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "Qb3",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "Bxf3",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Qxb7",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "Ndb4",
+                                                                              "enabled": true,
+                                                                              "children": [],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        },
+                                                                        {
+                                                                          "move": "gxf3",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "e6",
+                                                                              "enabled": true,
+                                                                              "children": [
+                                                                                {
+                                                                                  "move": "Qxb7",
+                                                                                  "enabled": true,
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "move": "Nxd4",
+                                                                                      "enabled": true,
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "move": "Bb5",
+                                                                                          "enabled": true,
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "move": "Nxb5",
+                                                                                              "enabled": true,
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "move": "Qc6",
+                                                                                                  "enabled": true,
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "move": "Ke7",
+                                                                                                      "enabled": true,
+                                                                                                      "children": [
+                                                                                                        {
+                                                                                                          "move": "Qxb5",
+                                                                                                          "enabled": true,
+                                                                                                          "children": [
+                                                                                                            {
+                                                                                                              "move": "Qd7",
+                                                                                                              "enabled": true,
+                                                                                                              "children": [],
+                                                                                                              "playerMove": true
+                                                                                                            }
+                                                                                                          ],
+                                                                                                          "playerMove": false
+                                                                                                        }
+                                                                                                      ],
+                                                                                                      "playerMove": true
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "playerMove": false
+                                                                                                }
+                                                                                              ],
+                                                                                              "playerMove": true
+                                                                                            }
+                                                                                          ],
+                                                                                          "playerMove": false
+                                                                                        }
+                                                                                      ],
+                                                                                      "playerMove": true
+                                                                                    }
+                                                                                  ],
+                                                                                  "playerMove": false
+                                                                                }
+                                                                              ],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            }
+                                                          ],
+                                                          "playerMove": false
+                                                        }
+                                                      ],
+                                                      "playerMove": true
+                                                    }
+                                                  ],
+                                                  "playerMove": false
+                                                }
+                                              ],
+                                              "playerMove": true
+                                            }
+                                          ],
+                                          "playerMove": false
+                                        }
+                                      ],
+                                      "playerMove": true
+                                    }
+                                  ],
+                                  "playerMove": false
+                                }
+                              ],
+                              "playerMove": true
+                            }
+                          ],
+                          "playerMove": false
+                        },
+                        {
+                          "move": "Nc3",
+                          "enabled": true,
+                          "children": [
+                            {
+                              "move": "dxe4",
+                              "enabled": true,
+                              "children": [
+                                {
+                                  "move": "Nxe4",
+                                  "enabled": true,
+                                  "children": [
+                                    {
+                                      "move": "Nd7",
+                                      "enabled": true,
+                                      "children": [
+                                        {
+                                          "move": "Ng5",
+                                          "enabled": true,
+                                          "children": [
+                                            {
+                                              "move": "Ngf6",
+                                              "enabled": true,
+                                              "children": [],
+                                              "playerMove": true
+                                            }
+                                          ],
+                                          "playerMove": false
+                                        }
+                                      ],
+                                      "playerMove": true
+                                    },
+                                    {
+                                      "move": "Bf5",
+                                      "enabled": true,
+                                      "children": [
+                                        {
+                                          "move": "Ng3",
+                                          "enabled": true,
+                                          "children": [
+                                            {
+                                              "move": "Bg6",
+                                              "enabled": true,
+                                              "children": [
+                                                {
+                                                  "move": "h4",
+                                                  "enabled": true,
+                                                  "children": [
+                                                    {
+                                                      "move": "h6",
+                                                      "enabled": true,
+                                                      "children": [
+                                                        {
+                                                          "move": "Nf3",
+                                                          "enabled": true,
+                                                          "children": [
+                                                            {
+                                                              "move": "Nd7",
+                                                              "enabled": true,
+                                                              "children": [
+                                                                {
+                                                                  "move": "h5",
+                                                                  "enabled": true,
+                                                                  "children": [
+                                                                    {
+                                                                      "move": "Bh7",
+                                                                      "enabled": true,
+                                                                      "children": [
+                                                                        {
+                                                                          "move": "Bd3",
+                                                                          "enabled": true,
+                                                                          "children": [
+                                                                            {
+                                                                              "move": "Bxd3",
+                                                                              "enabled": true,
+                                                                              "children": [
+                                                                                {
+                                                                                  "move": "Qxd3",
+                                                                                  "enabled": true,
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "move": "e6",
+                                                                                      "enabled": true,
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "move": "Bf4",
+                                                                                          "enabled": true,
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "move": "Ngf6",
+                                                                                              "enabled": true,
+                                                                                              "children": [],
+                                                                                              "playerMove": true
+                                                                                            },
+                                                                                            {
+                                                                                              "move": "Qa5",
+                                                                                              "enabled": true,
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "move": "Bd2",
+                                                                                                  "enabled": true,
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "move": "Qc7",
+                                                                                                      "enabled": true,
+                                                                                                      "children": [],
+                                                                                                      "playerMove": true
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "playerMove": false
+                                                                                                }
+                                                                                              ],
+                                                                                              "playerMove": true
+                                                                                            }
+                                                                                          ],
+                                                                                          "playerMove": false
+                                                                                        }
+                                                                                      ],
+                                                                                      "playerMove": true
+                                                                                    }
+                                                                                  ],
+                                                                                  "playerMove": false
+                                                                                }
+                                                                              ],
+                                                                              "playerMove": true
+                                                                            }
+                                                                          ],
+                                                                          "playerMove": false
+                                                                        }
+                                                                      ],
+                                                                      "playerMove": true
+                                                                    }
+                                                                  ],
+                                                                  "playerMove": false
+                                                                }
+                                                              ],
+                                                              "playerMove": true
+                                                            }
+                                                          ],
+                                                          "playerMove": false
+                                                        }
+                                                      ],
+                                                      "playerMove": true
+                                                    }
+                                                  ],
+                                                  "playerMove": false
+                                                }
+                                              ],
+                                              "playerMove": true
+                                            }
+                                          ],
+                                          "playerMove": false
+                                        }
+                                      ],
+                                      "playerMove": true
+                                    }
+                                  ],
+                                  "playerMove": false
+                                }
+                              ],
+                              "playerMove": true
+                            }
+                          ],
+                          "playerMove": false
+                        }
+                      ],
+                      "playerMove": true
+                    }
+                  ],
+                  "playerMove": false
+                }
+              ],
+              "playerMove": true
+            }
+          ],
+          "playerMove": false
+        }
+      ],
+      "playerMove": true
+    }
+  }
+}
