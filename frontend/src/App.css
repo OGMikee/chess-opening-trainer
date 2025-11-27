@@ -486,3 +486,76 @@ body {
   margin: 0.25rem 0;
   color: #4a9eff;
 }
+
+.panel-toggle-btn {
+  position: fixed;
+  bottom: 15px;
+  background: none;
+  color: #ffffff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.left-toggle {
+  left: 15px;
+}
+
+.right-toggle {
+  right: 15px;
+}
+
+.sidebar {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border-right: none;
+}
+
+.sidebar.collapsed h1,
+.sidebar.collapsed nav {
+  display: none;
+}
+
+.right-panel {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.right-panel.collapsed {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border-left: none;
+}
+
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  transition: grid-template-columns 0.3s ease;
+}
+
+.board-preview-floating {
+  transition: right 0.3s ease;
+}
+
+.App:has(.right-panel.collapsed) .board-preview-floating {
+  right: 20px;
+}

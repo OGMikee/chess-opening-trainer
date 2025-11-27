@@ -19,6 +19,8 @@ function App() {
     const [playthroughSession, setPlaythroughSession] = useState(null);
     const [playthroughFeedback, setPlaythroughFeedback] = useState(null);
     const [playthroughStartPath, setPlaythroughStartPath] = useState([]);
+    const [leftPanelOpen, setLeftPanelOpen] = useState(true);
+    const [rightPanelOpen, setRightPanelOpen] = useState(true);
 
     const handleQuizMove = async (from, to) => {
         if (!quizQuestion) return;
@@ -155,35 +157,48 @@ function App() {
 
     return (
         <div className="App">
-            <div className="sidebar">
-                <h1>♔ Chess Trainer</h1>
-                <nav>
-                    <button
-                        className={view === 'home' ? 'active' : ''}
-                        onClick={() => setView('home')}
-                    >
-                        Home
-                    </button>
-                    <button
-                        className={view === 'editor' ? 'active' : ''}
-                        onClick={() => setView('editor')}
-                    >
-                        Editor
-                    </button>
-                    <button
-                        className={view === 'quiz' ? 'active' : ''}
-                        onClick={() => setView('quiz')}
-                    >
-                        Quiz Mode
-                    </button>
-                    <button
-                        className={view === 'playthrough' ? 'active' : ''}
-                        onClick={() => setView('playthrough')}
-                    >
-                        Play-through
-                    </button>
-                </nav>
+            {/* Left Sidebar with Toggle */}
+            <div className={`sidebar ${leftPanelOpen ? '' : 'collapsed'}`}>
+                {leftPanelOpen && (
+                    <>
+                        <h1>♔ Chess Trainer</h1>
+                        <nav>
+                            <button
+                                className={view === 'home' ? 'active' : ''}
+                                onClick={() => setView('home')}
+                            >
+                                Home
+                            </button>
+                            <button
+                                className={view === 'editor' ? 'active' : ''}
+                                onClick={() => setView('editor')}
+                            >
+                                Editor
+                            </button>
+                            <button
+                                className={view === 'quiz' ? 'active' : ''}
+                                onClick={() => setView('quiz')}
+                            >
+                                Quiz Mode
+                            </button>
+                            <button
+                                className={view === 'playthrough' ? 'active' : ''}
+                                onClick={() => setView('playthrough')}
+                            >
+                                Play-through
+                            </button>
+                        </nav>
+                    </>
+                )}
             </div>
+
+            <button
+                className={`panel-toggle-btn left-toggle ${leftPanelOpen ? '' : 'collapsed'}`}
+                onClick={() => setLeftPanelOpen(!leftPanelOpen)}
+                title={leftPanelOpen ? "Collapse sidebar" : "Expand sidebar"}
+            >
+                ≡
+            </button>
 
             <div className="board-container">
                 {view === 'home' && <HomeBoard currentOpening={currentOpening} setCurrentOpening={setCurrentOpening} selectedPath={selectedPath} setSelectedPath={setSelectedPath} />}
@@ -192,12 +207,24 @@ function App() {
                 {view === 'playthrough' && <PlaythroughBoard currentOpening={currentOpening} playthroughSession={playthroughSession} onMove={handlePlaythroughMove} />}
             </div>
 
-            <div className="right-panel">
-                {view === 'home' && <HomePanel currentOpening={currentOpening} setCurrentOpening={setCurrentOpening} />}
-                {view === 'editor' && <EditorPanel currentOpening={currentOpening} setCurrentOpening={setCurrentOpening} startFromPath={startFromPath} setStartFromPath={setStartFromPath} isRecording={isRecording} setIsRecording={setIsRecording} moveHistory={moveHistory} setMoveHistory={setMoveHistory} />}
-                {view === 'quiz' && <QuizPanel currentOpening={currentOpening} quizQuestion={quizQuestion} setQuizQuestion={setQuizQuestion} quizScore={quizScore} quizFeedback={quizFeedback} />}
-                {view === 'playthrough' && <PlaythroughPanel currentOpening={currentOpening} setCurrentOpening={setCurrentOpening} playthroughSession={playthroughSession} setPlaythroughSession={setPlaythroughSession} playthroughFeedback={playthroughFeedback} setPlaythroughFeedback={setPlaythroughFeedback} playthroughStartPath={playthroughStartPath} setPlaythroughStartPath={setPlaythroughStartPath} />}
+            <div className={`right-panel ${rightPanelOpen ? '' : 'collapsed'}`}>
+                {rightPanelOpen && (
+                    <>
+                        {view === 'home' && <HomePanel currentOpening={currentOpening} setCurrentOpening={setCurrentOpening} />}
+                        {view === 'editor' && <EditorPanel currentOpening={currentOpening} setCurrentOpening={setCurrentOpening} startFromPath={startFromPath} setStartFromPath={setStartFromPath} isRecording={isRecording} setIsRecording={setIsRecording} moveHistory={moveHistory} setMoveHistory={setMoveHistory} />}
+                        {view === 'quiz' && <QuizPanel currentOpening={currentOpening} quizQuestion={quizQuestion} setQuizQuestion={setQuizQuestion} quizScore={quizScore} quizFeedback={quizFeedback} />}
+                        {view === 'playthrough' && <PlaythroughPanel currentOpening={currentOpening} setCurrentOpening={setCurrentOpening} playthroughSession={playthroughSession} setPlaythroughSession={setPlaythroughSession} playthroughFeedback={playthroughFeedback} setPlaythroughFeedback={setPlaythroughFeedback} playthroughStartPath={playthroughStartPath} setPlaythroughStartPath={setPlaythroughStartPath} />}
+                    </>
+                )}
             </div>
+
+            <button
+                className={`panel-toggle-btn right-toggle ${rightPanelOpen ? '' : 'collapsed'}`}
+                onClick={() => setRightPanelOpen(!rightPanelOpen)}
+                title={rightPanelOpen ? "Collapse panel" : "Expand panel"}
+            >
+                ≡
+            </button>
         </div>
     );
 }
@@ -371,6 +398,7 @@ function EditorBoard({ currentOpening, startFromPath, isRecording, moveHistory, 
     };
 
     const shouldFlipBoard = currentOpening?.tree?.playerColor === 'BLACK';
+
     return (
         <ChessBoard
             fen={boardFen}
@@ -620,6 +648,7 @@ function QuizBoard({ currentOpening, quizQuestion, onMove }) {
     }
 
     const shouldFlipBoard = currentOpening?.tree?.playerColor === 'BLACK';
+
     return <ChessBoard fen={quizQuestion.fen} onMove={onMove} flipped={shouldFlipBoard} />;
 }
 
@@ -740,6 +769,7 @@ function PlaythroughBoard({ currentOpening, playthroughSession, onMove }) {
     }
 
     const shouldFlipBoard = currentOpening?.tree?.playerColor === 'BLACK';
+
     return <ChessBoard fen={playthroughSession.gameFen} onMove={onMove} flipped={shouldFlipBoard} />;
 }
 
