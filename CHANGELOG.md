@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.12](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.11...v0.3.12) (2025-11-27)
+
+
+### Bug Fixes
+
+* **board:** board flip if black opening and board light/dark squared in right order ([2874b79](https://github.com/OGMikee/chess-opening-trainer/commit/2874b79efeed59be07d5effa17cd1dcf2a29737a))
+
 ### [0.3.11](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.10...v0.3.11) (2025-11-23)
 
 ### [0.3.10](https://github.com/OGMikee/chess-opening-trainer/compare/v0.3.9...v0.3.10) (2025-11-22)
