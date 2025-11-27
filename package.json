@@ -1,6 +1,6 @@
 {
   "name": "chess-opening-trainer",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "description": "Chess opening trainer with PGN support",
   "scripts": {
     "commit": "cz",
