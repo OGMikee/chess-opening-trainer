@@ -129,6 +129,7 @@ function ChessBoard({ fen, onMove, highlightedSquares = [], showWrongMove = fals
         return legalMoves.includes(square);
     };
 
+    // Determine which ranks and files to iterate through based on orientation
     const ranksToRender = flipped ? [0, 1, 2, 3, 4, 5, 6, 7] : [7, 6, 5, 4, 3, 2, 1, 0];
     const filesToRender = flipped ? [7, 6, 5, 4, 3, 2, 1, 0] : [0, 1, 2, 3, 4, 5, 6, 7];
 

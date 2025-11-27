@@ -5,9 +5,7 @@ import ChessBoard from './ChessBoard';
 import axios from 'axios';
 
 function isBlackOpening(tree) {
-    if (!tree || !tree.fen) return false;
-    const fenParts = tree.fen.split(' ');
-    return fenParts[1] === 'b';
+    return tree && tree.playerColor === 'BLACK';
 }
 
 function QuizMode({ currentOpening }) {
@@ -18,7 +16,13 @@ function QuizMode({ currentOpening }) {
     const [score, setScore] = useState({ correct: 0, total: 0 });
 
     const shouldFlipBoard = currentOpening && currentOpening.tree && isBlackOpening(currentOpening.tree);
-
+    console.log('=== DEBUG QuizMode ===');
+    console.log('currentOpening:', currentOpening);
+    console.log('tree:', currentOpening?.tree);
+    console.log('playerColor:', currentOpening?.tree?.playerColor);
+    console.log('isBlackOpening result:', isBlackOpening(currentOpening?.tree));
+    console.log('shouldFlipBoard:', shouldFlipBoard);
+    console.log('======================');
     const getNewQuiz = async () => {
         try {
             const response = await axios.post(`${API_URL}/api/training/quiz`, currentOpening.tree);

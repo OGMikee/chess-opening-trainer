@@ -267,7 +267,7 @@ function HomeBoard({ currentOpening, setCurrentOpening, selectedPath, setSelecte
             {selectedPath.length > 0 && (
                 <div className="board-preview-floating">
                     <h4>Position Preview</h4>
-                    <ChessBoard fen={boardFen} size="small" />
+                    <ChessBoard fen={boardFen} size="small" flipped={currentOpening?.tree?.playerColor === 'BLACK'} />
                 </div>
             )}
         </div>
@@ -370,10 +370,12 @@ function EditorBoard({ currentOpening, startFromPath, isRecording, moveHistory, 
         }
     };
 
+    const shouldFlipBoard = currentOpening?.tree?.playerColor === 'BLACK';
     return (
         <ChessBoard
             fen={boardFen}
             onMove={isRecording ? handleMove : null}
+            flipped={shouldFlipBoard}
         />
     );
 }
@@ -617,7 +619,8 @@ function QuizBoard({ currentOpening, quizQuestion, onMove }) {
         );
     }
 
-    return <ChessBoard fen={quizQuestion.fen} onMove={onMove} />;
+    const shouldFlipBoard = currentOpening?.tree?.playerColor === 'BLACK';
+    return <ChessBoard fen={quizQuestion.fen} onMove={onMove} flipped={shouldFlipBoard} />;
 }
 
 function QuizPanel({ currentOpening, quizQuestion, setQuizQuestion, quizScore, quizFeedback }) {
@@ -736,7 +739,8 @@ function PlaythroughBoard({ currentOpening, playthroughSession, onMove }) {
         );
     }
 
-    return <ChessBoard fen={playthroughSession.gameFen} onMove={onMove} />;
+    const shouldFlipBoard = currentOpening?.tree?.playerColor === 'BLACK';
+    return <ChessBoard fen={playthroughSession.gameFen} onMove={onMove} flipped={shouldFlipBoard} />;
 }
 
 function PlaythroughPanel({ currentOpening, setCurrentOpening, playthroughSession, setPlaythroughSession, playthroughFeedback, setPlaythroughFeedback, playthroughStartPath, setPlaythroughStartPath }) {

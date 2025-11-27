@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './FileManager.css';
 
 function FileManager({ currentOpening, setCurrentOpening }) {
     const fileInputRef = useRef(null);
+    const [showNewOpeningModal, setShowNewOpeningModal] = useState(false);
+    const [newOpeningName, setNewOpeningName] = useState('');
+    const [newOpeningColor, setNewOpeningColor] = useState('WHITE');
 
-    // Handle file upload
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
         if (!file) return;
@@ -37,21 +39,23 @@ function FileManager({ currentOpening, setCurrentOpening }) {
         URL.revokeObjectURL(url);
     };
 
-    // Create new opening
-    const handleNewOpening = () => {
-        const name = prompt('Enter opening name:');
-        if (!name) return;
-        const color = prompt('Enter your color (WHITE or BLACK):');
-        if (!color || (color !== 'WHITE' && color !== 'BLACK')) {
-            alert('Invalid color. Must be WHITE or BLACK');
+    const handleNewOpeningClick = () => {
+        setShowNewOpeningModal(true);
+        setNewOpeningName('');
+        setNewOpeningColor('WHITE');
+    };
+
+    const handleCreateOpening = () => {
+        if (!newOpeningName.trim()) {
+            alert('Please enter an opening name');
             return;
         }
 
         const newOpening = {
             version: '1.0',
-            name: name,
+            name: newOpeningName.trim(),
             tree: {
-                playerColor: color,
+                playerColor: newOpeningColor,
                 root: {
                     move: null,
                     enabled: true,
@@ -61,12 +65,13 @@ function FileManager({ currentOpening, setCurrentOpening }) {
             }
         };
         setCurrentOpening(newOpening);
+        setShowNewOpeningModal(false);
         console.log('Created new opening:', newOpening);
     };
 
     return (
         <div className="file-manager">
-            <button onClick={handleNewOpening} className="btn btn-primary">
+            <button onClick={handleNewOpeningClick} className="btn btn-primary">
                 New Opening
             </button>
             <button
@@ -89,7 +94,48 @@ function FileManager({ currentOpening, setCurrentOpening }) {
                 onChange={handleFileUpload}
                 style={{ display: 'none' }}
             />
+
+
+            {showNewOpeningModal && (
+                <div className="modal-overlay" onClick={() => setShowNewOpeningModal(false)}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <h3>Create New Opening</h3>
+
+                        <div className="form-group">
+                            <label>Opening Name:</label>
+                            <input
+                                type="text"
+                                value={newOpeningName}
+                                onChange={(e) => setNewOpeningName(e.target.value)}
+                                placeholder="e.g., Sicilian Defense"
+                                autoFocus
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Your Color:</label>
+                            <select
+                                value={newOpeningColor}
+                                onChange={(e) => setNewOpeningColor(e.target.value)}
+                            >
+                                <option value="WHITE">White</option>
+                                <option value="BLACK">Black</option>
+                            </select>
+                        </div>
+
+                        <div className="modal-actions">
+                            <button onClick={handleCreateOpening} className="btn btn-primary">
+                                Create
+                            </button>
+                            <button onClick={() => setShowNewOpeningModal(false)} className="btn btn-secondary">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
+
 export default FileManager;

@@ -5,9 +5,7 @@ import ChessBoard from './ChessBoard';
 import axios from 'axios';
 
 function isBlackOpening(tree) {
-    if (!tree || !tree.fen) return false;
-    const fenParts = tree.fen.split(' ');
-    return fenParts[1] === 'b';
+    return tree && tree.playerColor === 'BLACK';
 }
 
 function PlaythroughMode({ currentOpening }) {
