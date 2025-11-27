@@ -21,7 +21,7 @@ const PIECE_IMAGES = {
     'k': bk, 'q': bq, 'r': br, 'b': bb, 'n': bn, 'p': bp
 };
 
-function ChessBoard({ fen, onMove, highlightedSquares = [], showWrongMove = false, wrongMoveSquare = null, size = 'normal' }) {
+function ChessBoard({ fen, onMove, highlightedSquares = [], showWrongMove = false, wrongMoveSquare = null, size = 'normal', flipped = false }) {
     const [selectedSquare, setSelectedSquare] = useState(null);
     const [legalMoves, setLegalMoves] = useState([]);
     const [draggedFrom, setDraggedFrom] = useState(null);
@@ -129,6 +129,9 @@ function ChessBoard({ fen, onMove, highlightedSquares = [], showWrongMove = fals
         return legalMoves.includes(square);
     };
 
+    const ranksToRender = flipped ? [0, 1, 2, 3, 4, 5, 6, 7] : [7, 6, 5, 4, 3, 2, 1, 0];
+    const filesToRender = flipped ? [7, 6, 5, 4, 3, 2, 1, 0] : [0, 1, 2, 3, 4, 5, 6, 7];
+
     return (
         <div
             className={`chess-board-wrapper ${size === 'small' ? 'small': ''}`}
@@ -136,17 +139,18 @@ function ChessBoard({ fen, onMove, highlightedSquares = [], showWrongMove = fals
             onMouseUp={() => handleMouseUp(null, null)}
         >
             <div className="chess-board">
-                {board.map((row, rankIndex) =>
-                    row.map((piece, fileIndex) => {
-                        const rank = 7 - rankIndex;
+                {ranksToRender.map((rankIndex) =>
+                    filesToRender.map((fileIndex) => {
+                        const rank = rankIndex;
                         const file = fileIndex;
-                        const isLight = (rank + file) % 2 === 0;
+                        const isLight = (rank + file) % 2 === 1; // FIXED: a1 is now dark
                         const squareName = `${String.fromCharCode(97 + file)}${rank + 1}`;
+                        const piece = board[7 - rank][file];
                         const isSelected = selectedSquare === squareName;
                         const isLegalDest = isLegalDestination(squareName);
                         const isHighlighted = highlightedSquares.includes(squareName);
                         const isWrongMove = showWrongMove && wrongMoveSquare === squareName;
-                        const isDragging = draggedFrom === squareName;
+                        const isDraggingPiece = draggedFrom === squareName;
 
                         return (
                             <div
@@ -158,7 +162,7 @@ function ChessBoard({ fen, onMove, highlightedSquares = [], showWrongMove = fals
                                 onClick={() => handleSquareClick(squareName, piece)}
                                 onMouseUp={(e) => handleMouseUp(e, squareName)}
                             >
-                                {piece && !isDragging && (
+                                {piece && !isDraggingPiece && (
                                     <img
                                         src={PIECE_IMAGES[piece]}
                                         alt={piece}
@@ -169,8 +173,13 @@ function ChessBoard({ fen, onMove, highlightedSquares = [], showWrongMove = fals
                                 {isLegalDest && (
                                     <div className="legal-move-indicator"></div>
                                 )}
-                                {file === 0 && <span className="rank-label">{rank + 1}</span>}
-                                {rank === 0 && <span className="file-label">{String.fromCharCode(97 + file)}</span>}
+                                {/* Adjust label positions based on board orientation */}
+                                {(flipped ? file === 7 : file === 0) && (
+                                    <span className="rank-label">{rank + 1}</span>
+                                )}
+                                {(flipped ? rank === 7 : rank === 0) && (
+                                    <span className="file-label">{String.fromCharCode(97 + file)}</span>
+                                )}
                                 {isWrongMove && (
                                     <div className="wrong-move-x">✕</div>
                                 )}

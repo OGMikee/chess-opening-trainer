@@ -234,7 +234,7 @@ SOFTWARE.
 
 ## 🙏 Acknowledgments
 
-- Chess piece images from [insert source if applicable]
+- Chess piece images from chess.com
 - Built as a learning project to showcase software engineering skills
 - No external chess libraries used - engine built from scratch
 

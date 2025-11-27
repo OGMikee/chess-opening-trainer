@@ -4,12 +4,21 @@ import './QuizMode.css';
 import ChessBoard from './ChessBoard';
 import axios from 'axios';
 
+function isBlackOpening(tree) {
+    if (!tree || !tree.fen) return false;
+    const fenParts = tree.fen.split(' ');
+    return fenParts[1] === 'b';
+}
+
 function QuizMode({ currentOpening }) {
     const [quizQuestion, setQuizQuestion] = useState(null);
     const [selectedSquare, setSelectedSquare] = useState(null);
     const [userAnswer, setUserAnswer] = useState('');
     const [feedback, setFeedback] = useState(null);
     const [score, setScore] = useState({ correct: 0, total: 0 });
+
+    const shouldFlipBoard = currentOpening && currentOpening.tree && isBlackOpening(currentOpening.tree);
+
     const getNewQuiz = async () => {
         try {
             const response = await axios.post(`${API_URL}/api/training/quiz`, currentOpening.tree);
@@ -70,6 +79,7 @@ function QuizMode({ currentOpening }) {
                             fen={quizQuestion.fen}
                             onSquareClick={handleSquareClick}
                             highlightedSquares={selectedSquare ? [selectedSquare] : []}
+                            flipped={shouldFlipBoard}
                         />
                     </div>
                     <div className="answer-section">

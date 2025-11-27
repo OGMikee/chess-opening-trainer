@@ -4,11 +4,19 @@ import './PlaythroughMode.css';
 import ChessBoard from './ChessBoard';
 import axios from 'axios';
 
+function isBlackOpening(tree) {
+    if (!tree || !tree.fen) return false;
+    const fenParts = tree.fen.split(' ');
+    return fenParts[1] === 'b';
+}
+
 function PlaythroughMode({ currentOpening }) {
     const [session, setSession] = useState(null);
     const [userMove, setUserMove] = useState('');
     const [feedback, setFeedback] = useState(null);
     const [moveHistory, setMoveHistory] = useState([]);
+
+    const shouldFlipBoard = currentOpening && currentOpening.tree && isBlackOpening(currentOpening.tree);
 
     const startSession = async () => {
         try {
@@ -85,6 +93,7 @@ function PlaythroughMode({ currentOpening }) {
                     <div className="board-section">
                         <ChessBoard
                             fen={session.gameFen}
+                            flipped={shouldFlipBoard}
                         />
                     </div>
                     <div className="control-section">
